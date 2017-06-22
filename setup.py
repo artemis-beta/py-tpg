@@ -7,7 +7,7 @@ setup(name                =  'py-tpg'                                      ,
       author              =  'Kristian Zarebski'                           ,
       author_email        =  'krizar312@yahoo.co.uk'                       ,
       license             =  'MIT'                                         ,
-      packages            =  ['py-tpg', 'tabulate']                        ,
+      packages            =  ['py-tpg']                                    ,
       zip_safe            =  False                                         ,
       tests_require       =  ['nose2']                                    
      )
