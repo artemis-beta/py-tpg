@@ -88,3 +88,22 @@ Stop Name: {name}
         print(output)
         return output_tuples, output
 
+    def get_disruptions(self):
+        url = os.path.join(main_url, 'GetDisruptions?key={}'.format(self._api_key))
+        listing = requests.get(url).json()['disruptions']
+        output_strs = ''
+        output_tuples = []
+        try:
+            assert len(listing) > 0, "No disruptions found."
+        except:
+            print('No disruptions found')
+            return (), 'No disruptions found' 
+        for disruption in listing['disruptions']:
+            output_strs += '----------------------------\n'
+            output_strs += 'LINE {} - {}\n\n'.format(disruption['lineCode'], disruption['place'])
+            output_strs += 'Affecting Services From: {}'.format(disruption['stopName'])
+            output_strs += 'Summary: {}\n'.format(disruption['nature'])
+            output_strs += '{}\n'.format(disruption['consequence'])
+            output_tuples.append(disruption['lineCode'], disruption['place'], disruption['stopName'], disruption['nature'], disruption['consequence'])
+        print(output_strs)
+        return output_tuples, output_strs
