@@ -89,6 +89,7 @@ Stop Name: {name}
         return output_tuples, output
 
     def get_disruptions(self):
+        '''Return current disruption information'''
         url = os.path.join(main_url, 'GetDisruptions?key={}'.format(self._api_key))
         listing = requests.get(url).json()['disruptions']
         output_strs = ''
