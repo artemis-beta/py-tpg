@@ -1,7 +1,7 @@
 # Python TPG Client
 Class for interpreting API data from  Transports Publics Genevois (TPG)
 ```
-client = py-tpg.client('<API token>')
+client = pytpg.client('<API token>')
 client.get_departures('WTC')
 ```
 
