@@ -68,8 +68,11 @@ Stop Name: {name}
 {lines}
 -------------------------------
 '''
-
-        code = self.get_stop_code(req_stop)
+        try:
+            code = self.get_stop_code(req_stop)
+        except:
+            print("ERROR: Could not find stop code for request '{}",format(req_stop))
+            return
         url = os.path.join(main_url, 'GetNextDepartures?key={}&stopCode={}'.format(self._api_key, code))
         listing = requests.get(url).json()['departures']
         name = requests.get(url).json()['stop']['stopName']
